@@ -164,123 +164,166 @@ reg_verb([liked| T], T, P):- P is p; P is s; P is i.
 
 reg_verb([eats| T], T, s).
 reg_verb([eat| T], T, p).
-reg_verb([ate| T], T, p).
+reg_verb([ate| T], T, P):- P is p; P is s; P is i.
 
 reg_verb([thinks| T], T, s).
 reg_verb([think| T], T, p).
-reg_verb([thought| T], T, p).
+reg_verb([thought| T], T, P):- P is p; P is s; P is i.
 
 reg_verb([drinks| T], T, s).
 reg_verb([drink| T], T, p).
+reg_verb([drank| T], T, P):- P is p; P is s; P is i.
 
 reg_verb([talks| T], T, s).
 reg_verb([talk| T], T, p).
+reg_verb([talked| T], T, P):- P is p; P is s; P is i.
 
 reg_verb([sees| T], T, s).
 reg_verb([see| T], T, p).
+reg_verb([saw| T], T, P):- P is p; P is s; P is i.
 
 reg_verb([has| T], T, s).
 reg_verb([have| T], T, p).
+reg_verb([had| T], T, P):- P is p; P is s; P is i.
 
 reg_verb([walks| T], T, s).
 reg_verb([walk| T], T, p).
+reg_verb([walked| T], T, P):- P is p; P is s; P is i.
 
 reg_verb([puts| T], T, s).
 reg_verb([put| T], T, p).
+reg_verb([put| T], T, P):- P is p; P is s; P is i.
 
 reg_verb([gets| T], T, s).
 reg_verb([get| T], T, p).
+reg_verb([got| T], T, P):- P is p; P is s; P is i.
 
 reg_verb([lives| T], T, s).
 reg_verb([live| T], T, p).
+reg_verb([lived| T], T, P):- P is p; P is s; P is i.
 
 reg_verb([takes| T], T, s).
 reg_verb([take| T], T, p).
+reg_verb([took| T], T, P):- P is p; P is s; P is i.
 
 reg_verb([goes| T], T, s).
 reg_verb([go| T], T, p).
+reg_verb([went| T], T, P):- P is p; P is s; P is i.
 
 reg_verb([makes| T], T, s).
 reg_verb([make| T], T, p).
+reg_verb([made| T], T, P):- P is p; P is s; P is i.
 
 reg_verb([says| T], T, s).
 reg_verb([say| T], T, p).
+reg_verb([said| T], T, P):- P is p; P is s; P is i.
 
 reg_verb([knows| T], T, s).
 reg_verb([know| T], T, p).
+reg_verb([knew| T], T, P):- P is p; P is s; P is i.
 
 reg_verb([comes| T], T, s).
 reg_verb([come| T], T, p).
+reg_verb([came| T], T, P):- P is p; P is s; P is i.
 
 reg_verb([gives| T], T, s).
 reg_verb([give| T], T, p).
+reg_verb([gave| T], T, P):- P is p; P is s; P is i.
 
 reg_verb([comes| T], T, s).
 reg_verb([come| T], T, p).
+reg_verb([came| T], T, P):- P is p; P is s; P is i.
 
 reg_verb([wants| T], T, s).
 reg_verb([want| T], T, p).
+reg_verb([wanted| T], T, P):- P is p; P is s; P is i.
 
 reg_verb([uses| T], T, s).
 reg_verb([use| T], T, p).
+reg_verb([used| T], T, P):- P is p; P is s; P is i.
 
 reg_verb([finds| T], T, s).
 reg_verb([find| T], T, p).
+reg_verb([found| T], T, P):- P is p; P is s; P is i.
 
 reg_verb([tells| T], T, s).
 reg_verb([tell| T], T, p).
+reg_verb([told| T], T, P):- P is p; P is s; P is i.
 
 reg_verb([asks| T], T, s).
 reg_verb([ask| T], T, p).
+reg_verb([asked| T], T, P):- P is p; P is s; P is i.
 
 reg_verb([is| T], T, s).
 reg_verb([are| T], T, p).
+reg_verb([were| T], T, P):- P is p; P is s; P is i.
 
 reg_verb([works| T], T, s).
 reg_verb([work| T], T, p).
+reg_verb([worked| T], T, P):- P is p; P is s; P is i.
 
 reg_verb([feels| T], T, s).
 reg_verb([feel| T], T, p).
+reg_verb([felt| T], T, P):- P is p; P is s; P is i.
 
 reg_verb([tries| T], T, s).
 reg_verb([try| T], T, p).
+reg_verb([tried| T], T, P):- P is p; P is s; P is i.
 
 reg_verb([calls| T], T, s).
 reg_verb([call| T], T, p).
+reg_verb([called| T], T, P):- P is p; P is s; P is i.
 
 reg_verb([does| T], T, s).
 reg_verb([do| T], T, p).
+reg_verb([did| T], T, P):- P is p; P is s; P is i.
 
 reg_verb([needs| T], T, s).
 reg_verb([need| T], T, p).
+reg_verb([needed| T], T, P):- P is p; P is s; P is i.
 
 reg_verb([becomes| T], T, s).
 reg_verb([become| T], T, p).
+reg_verb([became| T], T, P):- P is p; P is s; P is i.
 
 reg_verb([means| T], T, s).
 reg_verb([mean| T], T, p).
+reg_verb([meant| T], T, P):- P is p; P is s; P is i.
 
 reg_verb([keeps| T], T, s).
 reg_verb([keep| T], T, p).
+reg_verb([kept| T], T, P):- P is p; P is s; P is i.
 
 reg_verb([lets| T], T, s).
+reg_verb([let| T], T, P):- P is p; P is s; P is i.
+
 reg_verb([helps| T], T, s).
+reg_verb([help| T], T, p).
+reg_verb([helped| T], T, P):- P is p; P is s; P is i.
+
+reg_verb([show| T],T, p).
 reg_verb([shows| T], T, s).
+reg_verb([showed| T], T, P):- P is p; P is s; P is i.
 
 reg_verb([happens| T], T, s).
 reg_verb([happen| T], T, p).
+reg_verb([happened| T], T, P):- P is p; P is s; P is i.
 
 reg_verb([believes| T], T, s).
 reg_verb([believe| T], T, p).
+reg_verb([believed T], T, P):- P is p; P is s; P is i.
 
 reg_verb([brings| T], T, s).
 reg_verb([bring| T], T, p).
+reg_verb([brought| T], T, P):- P is p; P is s; P is i.
 
 reg_verb([meets| T], T, s).
 reg_verb([meet| T], T, p).
+reg_verb([met| T], T, P):- P is p; P is s; P is i.
 
 reg_verb([leaves| T], T, s).
 reg_verb([leave| T], T, p).
+reg_verb([left| T], T, P):- P is p; P is s; P is i.
 
 % ------------ pronouns -----------------------
 pronoun([i| T], T, i).
@@ -313,7 +356,7 @@ proper_noun([netflix| T], T, s).
 proper_noun([canada| T], T, s).
 proper_noun([bc| T], T, s).
 proper_noun([vancouver| T], T, s).
-proper_noun([us| T], T, s).
+proper_noun([usa| T], T, s).
 proper_noun([india| T], T, s).
 proper_noun([china| T], T, s).
 proper_noun([mexico| T], T, s).
