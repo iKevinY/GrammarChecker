@@ -1,6 +1,6 @@
 # GrammarChecker
 
-To run GrammarChecker, launch SWI-Prolog and load `checker.pl`, then run `query()`.
+To run [GrammarChecker], launch SWI-Prolog and load `checker.pl`, then run `query()`.
 
 ```
 $ swipl
@@ -11,3 +11,6 @@ true.
 ?- q.
 Type a sentence:
 ```
+
+
+[GrammarChecker]: http://wiki.ubc.ca/Course:CPSC312-2016-Project1-GrammarChecker
