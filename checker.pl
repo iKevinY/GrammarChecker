@@ -68,8 +68,6 @@ Let's find table. ----> no
 */
 
 
-
-
 % sentence[]
 sentence(T0, T2, Person):-
 	noun_phrase(T0, T1, Person),
@@ -87,7 +85,7 @@ noun_phrase(T0,T4, Person) :-
 verb_phrase(T0,T3, Person):-
 	verb(T0,T1, Person),
 	prep(T1,T2),
-	noun_phrase(T2,T3, _).
+	noun_phrase(T2,T3, Person).
 
 
 % Determiners (articles) are ignored in this oversimplified example.
@@ -99,8 +97,8 @@ det(T,T,_).
 
 % preposition phrase (keep it simple for now):
 % e.g. I want the bag [in the fridge]. She didn't bring me [with her].
-prep_phrase(T ,T ,_).
-prep_phrase(T0, T2, _):-
+prep_phrase(T, T).
+prep_phrase(T0, T2):-
 	prep(T0, T1),
 	noun(T1, T2).
 
@@ -108,10 +106,10 @@ prep_phrase(T0, T2, _):-
 
 % Adjectives consist of a sequence of adjectives.
 % The meaning of the arguments is the same as for noun_phrase
-adjectives(T0,T2,Ind) :-
-    adj(T0,T1,Ind),
-    adjectives(T1,T2,Ind).
-adjectives(T,T,_).
+adjectives(T0,T2) :-
+    adj(T0,T1),
+    adjectives(T1,T2).
+adjectives(T,T).
 
 % An optional modifying phrase / relative clause is either
 % a relation (verb or preposition) followed by a noun_phrase or
@@ -133,12 +131,12 @@ mp([that|T0],T1,Person) :-
 mp(T,T,_).
 
 
-noun(T0, T1, _):- pronoun(T0, T1, _).
-noun(T0, T1, _):- proper_noun(T0,T1, _).
-noun(T0, T1, _):- thing(T0,T1, _).
+noun(T0, T1, Person):- pronoun(T0, T1, Person).
+noun(T0, T1, Person):- proper_noun(T0,T1, Person).
+noun(T0, T1, Person):- thing(T0,T1, Person).
 
-verb(T0, T1, _):- aux_verb(T0, T1, _).
-verb(T0, T1, _):- reg_verb(T0, T1, _).
+verb(T0, T1, Person):- aux_verb(T0, T1, Person).
+verb(T0, T1, Person):- reg_verb(T0, T1, Person).
 
 %Dictionary
 
@@ -271,7 +269,7 @@ reg_verb([leaves| T], T, s).
 reg_verb([leave| T], T, p).
 
 % ------------ pronouns -----------------------
-pronoun([i| T], T, p).
+pronoun([i| T], T, i).
 pronoun([we| T], T, p).
 pronoun([you| T], T, p).
 pronoun([they| T], T, p).
@@ -477,5 +475,5 @@ To start testing sentences, run the following:
 query() :-
     write("Type a sentence: "),
     readln(Ln),
-    sentence(Ln,End),
+    sentence(Ln,End, _),
     member(End,[[],['?'],['.']]).
