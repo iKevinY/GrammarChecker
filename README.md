@@ -8,6 +8,6 @@ $ swipl
 ?- [checker].
 true.
 
-?- query().
+?- q.
 Type a sentence:
 ```

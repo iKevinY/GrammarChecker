@@ -484,9 +484,9 @@ adj([tired| T], T).
 
 /*
 To start testing sentences, run the following:
-?- query().
+?- q.
 */
-query() :-
+q :-
     write("Type a sentence: "),
     readln(Ln),
     maplist(downcase_atom,Ln,Sentence),
