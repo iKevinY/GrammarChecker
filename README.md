@@ -1,3 +1,13 @@
 # GrammarChecker
 
-http://wiki.ubc.ca/Course:CPSC312-2016-Project1-GrammarChecker
+To run GrammarChecker, launch SWI-Prolog and load `checker.pl`, then run `query()`.
+
+```
+$ swipl
+
+?- [checker].
+true.
+
+?- query().
+Type a sentence:
+```
