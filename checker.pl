@@ -1,5 +1,5 @@
 % GrammarChecker.pl
-/* 
+/*
 
 -------------- One concret sentences example ---------------------------
 
@@ -22,7 +22,7 @@ Plural:
 First Person Singular:
 
 	I
-	
+
 	Everything is the same except for:
 	am(not) eating/am going to eat/am gonna eat/am to eat/was(not) eating
 
@@ -48,15 +48,15 @@ I like eating that kind of chocolates.
 I like eating chocolates that my mom bought me.
 
 -----------------------------other linguistic facts -----------------------------------
-   
-noun: 
-pronoun: we(us), I(me), they(them), she(her).... 
+
+noun:
+pronoun: we(us), I(me), they(them), she(her)....
 proper nouns: Kevin, Kevin and Victoria, UBC, Google.....
 things: pencil(s), water, a school of fish, brother, her heart...
 
-verb: 
+verb:
 auxilary: do, has, shall, can, would....
-regular: sing, tends to, played with.... 
+regular: sing, tends to, played with....
 
 For singular, countable nouns, you have to have determinaters
 
@@ -97,7 +97,7 @@ det([a | T],T).
 det([an| T], T).
 det(T,T,_).
 
-% preposition phrase (keep it simple for now): 
+% preposition phrase (keep it simple for now):
 % e.g. I want the bag [in the fridge]. She didn't bring me [with her].
 prep_phrase(T ,T ,_).
 prep_phrase(T0, T2, _):-
@@ -116,8 +116,8 @@ adjectives(T,T,_).
 % An optional modifying phrase / relative clause is either
 % a relation (verb or preposition) followed by a noun_phrase or
 % 'that' followed by a relation then a noun_phrase or
-% nothing 
-mp(T0,T1, Person) :-
+% nothing
+mp(T0,T1, _) :-
     prep_phrase(T0,T1).
 mp([that|T0],T1,Person) :-
     verb_phrase(T0,T1,Person).
@@ -287,58 +287,58 @@ pronoun([him| T], T, s).
 
 % -------------- proper nouns --------------
 
-proper_noun(ubc| T], T, s).
-proper_noun(google| T], T, s).
-proper_noun(facebook| T], T, s).
-proper_noun(linkedin| T], T, s).
-proper_noun(instagram| T], T, s).
-proper_noun(whatsapp| T], T, s).
-proper_noun(wechat| T], T, s).
-proper_noun(twitter| T], T, s).
-proper_noun(youtube| T], T, s).
-proper_noun(netflix| T], T, s).
+proper_noun([ubc| T], T, s).
+proper_noun([google| T], T, s).
+proper_noun([facebook| T], T, s).
+proper_noun([linkedin| T], T, s).
+proper_noun([instagram| T], T, s).
+proper_noun([whatsapp| T], T, s).
+proper_noun([wechat| T], T, s).
+proper_noun([twitter| T], T, s).
+proper_noun([youtube| T], T, s).
+proper_noun([netflix| T], T, s).
 
-proper_noun(canada| T], T, s).
-proper_noun(bc| T], T, s).
-proper_noun(vancouver| T], T, s).
-proper_noun(us| T], T, s).
-proper_noun(india| T], T, s).
-proper_noun(china| T], T, s).
-proper_noun(mexico| T], T, s).
+proper_noun([canada| T], T, s).
+proper_noun([bc| T], T, s).
+proper_noun([vancouver| T], T, s).
+proper_noun([us| T], T, s).
+proper_noun([india| T], T, s).
+proper_noun([china| T], T, s).
+proper_noun([mexico| T], T, s).
 
-proper_noun(victoria| T], T, s).
-proper_noun(kevin| T], T, s).
-proper_noun(kelvin| T], T, s).
-proper_noun(david| T], T, s).
-proper_noun(emily| T], T, s).
-proper_noun(rui| T], T, s).
-proper_noun(alex| T], T, s).
-proper_noun(julin| T], T, s).
-proper_noun(peter| T], T, s).
-proper_noun(anne| T], T, s).
-proper_noun(anna| T], T, s).
-proper_noun(annie| T], T, s).
-proper_noun(rebecca| T], T, s).
-proper_noun(ben| T], T, s).
-proper_noun(michael| T], T, s).
-proper_noun(michelle| T], T, s).
-proper_noun(rachael| T], T, s).
-proper_noun(lily| T], T, s).
-proper_noun(linda| T], T, s).
-proper_noun(richard| T], T, s).
-proper_noun(john| T], T, s).
-proper_noun(james| T], T, s).
-proper_noun(eric| T], T, s).
-proper_noun(marry| T], T, s).
-proper_noun(matthew| T], T, s).
-proper_noun(fiona| T], T, s).
-proper_noun(crystal| T], T, s).
-proper_noun(jessica| T], T, s).
-proper_noun(sherry| T], T, s).
-proper_noun(grace| T], T, s).
-proper_noun(alan| T], T, s).
-proper_noun(janet| T], T, s).
-proper_noun(jean| T], T, s).
+proper_noun([victoria| T], T, s).
+proper_noun([kevin| T], T, s).
+proper_noun([kelvin| T], T, s).
+proper_noun([david| T], T, s).
+proper_noun([emily| T], T, s).
+proper_noun([rui| T], T, s).
+proper_noun([alex| T], T, s).
+proper_noun([julin| T], T, s).
+proper_noun([peter| T], T, s).
+proper_noun([anne| T], T, s).
+proper_noun([anna| T], T, s).
+proper_noun([annie| T], T, s).
+proper_noun([rebecca| T], T, s).
+proper_noun([ben| T], T, s).
+proper_noun([michael| T], T, s).
+proper_noun([michelle| T], T, s).
+proper_noun([rachael| T], T, s).
+proper_noun([lily| T], T, s).
+proper_noun([linda| T], T, s).
+proper_noun([richard| T], T, s).
+proper_noun([john| T], T, s).
+proper_noun([james| T], T, s).
+proper_noun([eric| T], T, s).
+proper_noun([marry| T], T, s).
+proper_noun([matthew| T], T, s).
+proper_noun([fiona| T], T, s).
+proper_noun([crystal| T], T, s).
+proper_noun([jessica| T], T, s).
+proper_noun([sherry| T], T, s).
+proper_noun([grace| T], T, s).
+proper_noun([alan| T], T, s).
+proper_noun([janet| T], T, s).
+proper_noun([jean| T], T, s).
 
 % ---------------------------- thing ----------------
 thing([time| T], T, s).
@@ -470,14 +470,11 @@ adj([sad| T], T).
 adj([tall| T], T).
 adj([tired| T], T).
 
-
-
-% Some Example Queries
-% ask noun_phrase([a,computer,science,course],R,Ind,[],C).
-% ask noun_phrase([a,tall,student,enrolled,in,a,computer,science,course],R,Ind,[],C).
-
-
-(Ans) :-
+/*
+To start testing sentences, run the following:
+?- query().
+*/
+query() :-
     write("Type a sentence: "),
     readln(Ln),
     sentence(Ln,End),
