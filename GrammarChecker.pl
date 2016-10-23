@@ -144,22 +144,11 @@ verb(T0, T1, _):- reg_verb(T0, T1, _).
 
 % ------------------ regular verbs ----------------------
 
-verb([like | T], T, i).     % "I like"
-verb([like | T], T, you).   % "You like"
-verb([likes | T], T, he).   % "He/she/it/the person likes"
-verb([like | T], T, we).    % "We like"
-verb([like | T], T, they).  % "They like"
 
-verb([liked | T], T, i).     % "I liked"
-verb([liked | T], T, you).   % "You liked"
-verb([liked | T], T, he).    % "He/she/it/the person liked"
-verb([liked | T], T, we).    % "We liked"
-verb([liked | T], T, they).  % "They liked"
-
-
+reg_verb([like | T], T, i).
 reg_verb([likes| T], T, s). %s means singular, p means plural.
 reg_verb([like| T], T, p).
-reg_verb([liked| T], T, p).
+reg_verb([liked| T], T, P):- P is p; P is s; P is i.
 
 reg_verb([eats| T], T, s).
 reg_verb([eat| T], T, p).
