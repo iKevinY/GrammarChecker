@@ -73,29 +73,33 @@ sentence(T0, T2, Person):-
 	noun_phrase(T0, T1, Person),
 	verb_phrase(T1, T2, Person).
 
-% A noun phrase is a determiner followed by adjectives followed
-% by a noun followed by an optional modifying phrase:
+
+
+% A noun phrase is an optional determiner followed by
+% an optional adjective followed by a simple noun
 noun_phrase(T0,T4, Person) :-
 	det(T0,T1),
-    noun(T1,T4, Person).
+	adjectives(T1, T2),
+    noun(T2,T4, Person).
 
-% verb_phrase()
-verb_phrase(T0,T3, Person):-
-	verb(T0,T3, Person).
+% Alternatively, a proper noun is a noun phrase
+noun_phrase(T0, T1, Person) :-
+	proper_noun(T0, T1, Person).
 
-%% noun_phrase(T0,T4, Person) :-
-%%     det(T0,T1),
-%%     adjectives(T1,T2),
-%%     noun(T2,T3, Person),
-%%     mp(T3,T4, Person).
-%%     noun(T0,T4, Person).
+% Also, a pronoun is a noun phrase
+noun_phrase(T0, T1, Person) :-
+	pronoun(T0, T1, Person).
 
-%% % verb_phrase()
-%% verb_phrase(T0,T3, Person):-
-%% 	verb(T0,T1, Person),
-%% 	prep(T1,T2),
-%% 	noun_phrase(T2,T3, Person).
-%% 	verb(T0,T3, Person).
+
+
+% Verb phrases could either be just a verb...
+verb_phrase(T0,T1, Person):-
+	verb(T0,T1, Person).
+
+% ...or a verb followed by a noun phrase.
+verb_phrase(T0,T2, Person):-
+	verb(T0,T1, Person),
+	noun_phrase(T1,T2, _).
 
 
 % Determiners (articles) are ignored in this oversimplified example.
