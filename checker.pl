@@ -489,5 +489,6 @@ To start testing sentences, run the following:
 query() :-
     write("Type a sentence: "),
     readln(Ln),
-    sentence(Ln,End, _),
+    maplist(downcase_atom,Ln,Sentence),
+    sentence(Sentence, End, _),
     member(End,[[],['?'],['.']]).
