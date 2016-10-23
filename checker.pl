@@ -67,6 +67,8 @@ Let's find table. ----> no
 
 */
 
+:- discontiguous aux_verb/4.
+
 
 % sentence[]
 sentence(T0, T2, Person):-
@@ -94,11 +96,11 @@ noun_phrase(T0, T1, Person) :-
 
 % Verb phrases could either be just a verb...
 verb_phrase(T0,T1, Person):-
-	verb(T0,T1, Person, Tense).
+	verb(T0,T1, Person).
 
 % ...or a verb followed by a noun phrase.
-verb_phrase(T0,T2, Person,):-
-	verb(T0,T1, Person, Tense),
+verb_phrase(T0,T2, Person):-
+	verb(T0,T1, Person),
 	noun_phrase(T1,T2, _).
 
 
@@ -151,10 +153,10 @@ noun(T0, T1, Person):- proper_noun(T0,T1, Person).
 noun(T0, T1, Person):- thing(T0,T1, Person).
 
 
-verb(T0, T1, Person, Tense):- reg_verb(T0, T1, Person, Tense).
-verb(T0, T2, Person, Tense):- 
+verb(T0, T1, Person):- reg_verb(T0, T1, Person, _).
+verb(T0, T2, Person):-
 	aux_verb(T0, T1, Person, Tense),
-	reg_verb(T0, T2, Person, Tense).
+	reg_verb(T1, T2, Person, Tense).
 
 %Dictionary
 
@@ -177,7 +179,7 @@ aux_verb([might| T], T, _, pre).
 aux_verb([might, not| T], T, _, pre).
 aux_verb([do| T], T, P, pre):- P = i; P = p. % I do think it's nice.
 aux_verb([do, not| T], T, P, pre):- P = i; P = p.
-aux_verb([did| T], T, P, pre).
+aux_verb([did| T], T, _, pre).
 aux_verb([did, not| T], T, _, pre).
 aux_verb([shall| T], T, _, pre).
 aux_verb([shall, not| T], T, _, pre).
@@ -201,11 +203,11 @@ aux_verb([was, not, to| T], T, P, pre):- P = i; P = s.
 
 aux_verb([am, going, to| T], T, i, pre).
 aux_verb([am, gonna| T], T, i, pre).
-aux_verb([am, not, going, to| T], T, i, pre). 
+aux_verb([am, not, going, to| T], T, i, pre).
 aux_verb([am, not, gonna| T], T, i, pre).
 aux_verb([are, going, to| T], T, p, pre).
 aux_verb([are, gonna| T], T, p, pre).
-aux_verb([are, not going, to| T], T, p, pre).
+aux_verb([are, not, going, to| T], T, p, pre).
 aux_verb([are, not, gonna| T], T, p, pre).
 aux_verb([is, going, to| T], T, s, pre).
 aux_verb([is, gonna| T], T, s, pre).
@@ -215,11 +217,11 @@ aux_verb([is, not, gonna| T], T, s, pre).
 
 aux_verb([was, going, to| T], T, i, pre).
 aux_verb([was, gonna| T], T, i, pre).
-aux_verb([was, not, going, to| T], T, i, pre). 
+aux_verb([was, not, going, to| T], T, i, pre).
 aux_verb([was, not, gonna| T], T, i, pre).
 aux_verb([were, going, to| T], T, p, pre).
 aux_verb([were, gonna| T], T, p, pre).
-aux_verb([were, not going, to| T], T, p, pre).
+aux_verb([were, not, going, to| T], T, p, pre).
 aux_verb([were, not, gonna| T], T, p, pre).
 aux_verb([was, going, to| T], T, s, pre).
 aux_verb([was, gonna| T], T, s, pre).
@@ -237,34 +239,34 @@ aux_verb([are| T], T, p, Ten):- Ten = cont; Ten = pp.
 aux_verb([are, not| T], T, p, Ten):- Ten = cont; Ten = pp.
 aux_verb([are, being| T], T, p, pp).
 aux_verb([are, not, being| T], T, p, pp).
-aux_verb([is| T], T, s, Ten):- Ten = cont; Ten = pp. 
-aux_verb([is, not| T], T, s, Ten):- Ten = cont; Ten = pp. 
+aux_verb([is| T], T, s, Ten):- Ten = cont; Ten = pp.
+aux_verb([is, not| T], T, s, Ten):- Ten = cont; Ten = pp.
 aux_verb([is, being| T], T, s, pp).
 aux_verb([is, not, being| T], T, s, pp).
-aux_verb([am, being| T], T, i, pp). 
+aux_verb([am, being| T], T, i, pp).
 aux_verb([am, not, being| T], T, i, pp).
 aux_verb([am| T], T, i, Ten):- Ten = cont; Ten = pp.
 aux_verb([am, not| T], T, i, Ten):- Ten = cont; Ten = pp.
 
-aux_verb([am, going, to, be| T], T, i, Ten): Ten = cont; Ten = pp.
-aux_verb([am, gonna, be| T], T, i, Ten): Ten = cont; Ten = pp.
-aux_verb([am, not, going, to, be| T], T, i, Ten): Ten = cont; Ten = pp. 
-aux_verb([am, not, gonna, be| T], T, i, Ten): Ten = cont; Ten = pp.
-aux_verb([are, going, to, be| T], T, p, Ten): Ten = cont; Ten = pp.
-aux_verb([are, gonna, be| T], T, p, Ten): Ten = cont; Ten = pp.
-aux_verb([are, not going, to, be| T], T, p, Ten): Ten = cont; Ten = pp.
-aux_verb([are, not, gonna, be| T], T, p, Ten): Ten = cont; Ten = pp.
-aux_verb([is, going, to, be| T], T, s, Ten): Ten = cont; Ten = pp.
-aux_verb([is, gonna, be| T], T, s, Ten): Ten = cont; Ten = pp.
-aux_verb([is, not, going, to, be| T], T, s, Ten): Ten = cont; Ten = pp.
-aux_verb([is, not, gonna, be| T], T, s, Ten): Ten = cont; Ten = pp.
+aux_verb([am, going, to, be| T], T, i, Ten) :- Ten = cont; Ten = pp.
+aux_verb([am, gonna, be| T], T, i, Ten) :- Ten = cont; Ten = pp.
+aux_verb([am, not, going, to, be| T], T, i, Ten) :- Ten = cont; Ten = pp.
+aux_verb([am, not, gonna, be| T], T, i, Ten) :- Ten = cont; Ten = pp.
+aux_verb([are, going, to, be| T], T, p, Ten) :- Ten = cont; Ten = pp.
+aux_verb([are, gonna, be| T], T, p, Ten) :- Ten = cont; Ten = pp.
+aux_verb([are, not, going, to, be| T], T, p, Ten) :- Ten = cont; Ten = pp.
+aux_verb([are, not, gonna, be| T], T, p, Ten) :- Ten = cont; Ten = pp.
+aux_verb([is, going, to, be| T], T, s, Ten) :- Ten = cont; Ten = pp.
+aux_verb([is, gonna, be| T], T, s, Ten) :- Ten = cont; Ten = pp.
+aux_verb([is, not, going, to, be| T], T, s, Ten) :- Ten = cont; Ten = pp.
+aux_verb([is, not, gonna, be| T], T, s, Ten) :- Ten = cont; Ten = pp.
 
 aux_verb([was, going, to, be| T], T, P, Ten):- (P = i; P= s), (Ten = cont; Ten = pp).
 aux_verb([was, gonna, be| T], T, P, Ten):- (P = i; P= s), (Ten = cont; Ten = pp).
 aux_verb([was, going, to, be| T], T, P, Ten):- (P = i; P= s), (Ten = cont; Ten = pp).
 aux_verb([was, not, going, to, be| T], T, P, Ten):- (P = i; P= s), (Ten = cont; Ten = pp).
 aux_verb([were, going, to, be| T], T, p, Ten):- Ten = cont; Ten = pp.
-aux_verb([were, not, going, to, be| T], T, p, Ten):- Ten = cont; Ten = pp. 
+aux_verb([were, not, going, to, be| T], T, p, Ten):- Ten = cont; Ten = pp.
 aux_verb([were, gonna, be| T], T, p, Ten):- Ten = cont; Ten = pp.
 aux_verb([were, not, gonna, be| T], T, p, Ten):- Ten = cont; Ten = pp.
 
@@ -276,7 +278,7 @@ aux_verb([has, not| T], T, s, pp).
 
 aux_verb([have, been| T], T, P, Ten):- (Ten = cont; Ten = pp), (P = i; P = p).
 aux_verb([have, not, been| T], T, P, Ten):- (Ten = cont; Ten = pp), (P = i; P = p).
-aux_verb([has, been| T], T, s, Ten):- Ten = cont; Ten = pp. 
+aux_verb([has, been| T], T, s, Ten):- Ten = cont; Ten = pp.
 aux_verb([has, not, been| T], T, s, Ten):- Ten = cont; Ten = pp.
 
 aux_verb([had| T], T, _, pp).
@@ -499,7 +501,7 @@ reg_verb([happened| T], T, P):- P is p; P is s; P is i.
 
 reg_verb([believes| T], T, s).
 reg_verb([believe| T], T, p).
-reg_verb([believed T], T, P):- P is p; P is s; P is i.
+reg_verb([believed| T], T, P):- P is p; P is s; P is i.
 
 reg_verb([brings| T], T, s).
 reg_verb([bring| T], T, p).
