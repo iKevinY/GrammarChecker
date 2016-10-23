@@ -76,16 +76,26 @@ sentence(T0, T2, Person):-
 % A noun phrase is a determiner followed by adjectives followed
 % by a noun followed by an optional modifying phrase:
 noun_phrase(T0,T4, Person) :-
-    det(T0,T1),
-    adjectives(T1,T2),
-    noun(T2,T3, Person),
-    mp(T3,T4, Person).
+	det(T0,T1),
+    noun(T1,T4, Person).
 
 % verb_phrase()
 verb_phrase(T0,T3, Person):-
-	verb(T0,T1, Person),
-	prep(T1,T2),
-	noun_phrase(T2,T3, Person).
+	verb(T0,T3, Person).
+
+%% noun_phrase(T0,T4, Person) :-
+%%     det(T0,T1),
+%%     adjectives(T1,T2),
+%%     noun(T2,T3, Person),
+%%     mp(T3,T4, Person).
+%%     noun(T0,T4, Person).
+
+%% % verb_phrase()
+%% verb_phrase(T0,T3, Person):-
+%% 	verb(T0,T1, Person),
+%% 	prep(T1,T2),
+%% 	noun_phrase(T2,T3, Person).
+%% 	verb(T0,T3, Person).
 
 
 % Determiners (articles) are ignored in this oversimplified example.
@@ -135,7 +145,6 @@ noun(T0, T1, Person):- pronoun(T0, T1, Person).
 noun(T0, T1, Person):- proper_noun(T0,T1, Person).
 noun(T0, T1, Person):- thing(T0,T1, Person).
 
-verb(T0, T1, Person):- aux_verb(T0, T1, Person).
 verb(T0, T1, Person):- reg_verb(T0, T1, Person).
 
 %Dictionary
