@@ -98,10 +98,15 @@ noun_phrase(T0, T1, Person) :-
 verb_phrase(T0,T1, Person):-
 	verb(T0,T1, Person, _).
 
+verb_phrase(T0, T2, Person):-
+	verb(T0, T1, Person, _),
+	prep_phrase(T1, T2).
+
 % ...or a verb followed by a noun phrase.
 verb_phrase(T0,T2, Person):-
 	verb(T0,T1, Person, _),
 	noun_phrase(T1, T2, _).
+
 
 
 % Determiners (articles) are ignored in this oversimplified example.
@@ -117,6 +122,8 @@ prep_phrase(T, T).
 prep_phrase(T0, T2):-
 	prep(T0, T1),
 	noun_phrase(T1, T2, _).
+prep_phrase(T0, T2):-
+	prep(T0, T1).
 
 
 
@@ -279,6 +286,10 @@ aux_verb([were, gonna, be| T], T, p, Ten):- Ten = cont; Ten = pp.
 aux_verb([were, not, gonna, be| T], T, p, Ten):- Ten = cont; Ten = pp.
 aux_verb([were, being| T], T, p, pp).
 aux_verb([were, not, being| T], T, p, pp).
+aux_verb([was| T], T, P, Ten):- (P = i; P = s) & (Ten = cont; Ten = pp).
+aux_verb([was, not| T], T, P, Ten):- (P = i; P = s) & (Ten = cont; Ten = pp).
+aux_verb([were| T], T, p, Ten):- Ten = cont; Ten = pp.
+aux_verb([were, not| T], T, p, Ten):- Ten = cont; Ten = pp.
 
 
 aux_verb([have| T], T, P, pp):- P = i; P = p.
