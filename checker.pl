@@ -70,9 +70,20 @@ Let's find table. ----> no
 :- discontiguous aux_verb/4.
 
 
-sentence(T0, T2, Person):-
+sentence(T0, T3, Person):-
 	noun_phrase(T0, T1, Person),
 	verb_phrase(T1, T2, Person).
+
+sentence(T0, T3, Person):-
+	there(T0, T1),
+	verb(T1, T2, Person, _),
+	noun_phrase(T2, T3, Person).
+
+sentence(T0, T3, Person):-
+	here(T0, T1),
+	verb(T1, T2, Person, _),
+	noun_phrase(T2, T3, Person).
+
 
 
 % A noun phrase is an optional determiner followed by
@@ -193,6 +204,10 @@ verb(T0, T2, Person, _):-
 
 
 % pre: present -> so that the verb should be regular form: draw
+
+	
+there([there| T], T).
+here([here| T], T).
 
 aux_verb([can| T], T, _, pre).
 aux_verb([cannot| T], T, _, pre).
@@ -397,6 +412,11 @@ The verbs are divided into the following subactegories:
 4. pre and past are the same. e.g. bit, bit. bitten
 4. All three are different. e.g. take, took, taken
 */
+
+reg_verb([exists| T], T, P, pre):- P = i; P = p.
+reg_verb([exist| T], T, s, pres).
+reg_verb([existed| T], T, _, Ten):- Ten = pp; Ten = past.
+reg_verb([existing| T], T, _, cont).
 
 reg_verb([like| T], T, P, pre):- P = i; P = p.
 reg_verb([likes| T], T, s, pres).
@@ -1551,6 +1571,10 @@ thing([trouble| T], T, s).
 
 thing([road| T], T, s).
 thing([roads| T], T, p).
+thing([tree| T], T, s).
+thing([trees| T], T, p).
+thing([ground| T], T, s).
+thing([earth| T], T, s).
 thing([streets| T], T, p).
 thing([street| T], T, s).
 thing([bus| T], T, s).
@@ -1774,7 +1798,13 @@ adj([difficult| T], T).
 adj([easy| T], T).
 adj([trivial| T], T).
 adj([current| T], T).
-adj([past| T], T).
+
+adj([this| T], T).
+adj([that| T], T).
+adj([these| T], T).
+adj([those| T], T).
+adj([successful| T], T).
+adj([funny| T], T).
 adj([a, number, of| T], T).
 adj([a, group, of| T], T).
 adj([a, lot, of| T], T).
