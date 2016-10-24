@@ -1,6 +1,6 @@
 # GrammarChecker
 
-To run [GrammarChecker], launch SWI-Prolog and load `checker.pl`, then run `query()`.
+To run [GrammarChecker], launch SWI-Prolog and load `checker.pl`, then run `q.` before each query.
 
 ```
 $ swipl
