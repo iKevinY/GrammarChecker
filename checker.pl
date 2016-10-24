@@ -169,57 +169,18 @@ verb(T0, T2, Person, _):-
 	aux_verb(T0, T1, Person, Tense),
 	reg_verb(T1, T2, _, Tense).
 
+verb(T0, T1, Person, _):-
+	to_be_verb(T0, T1, Person, _).
+verb(T0, T2, Person, _):-
+	to_be_verb(T0, T1, Person, Tense),
+	reg_verb(T1, T2, _, Tense).
+
 
 %Dictionary
 
 
 
-% ----------------- 'to be' verbs --------------
-
-to_be_verb([am | T], T, i, pre).
-to_be_verb([am, not | T], T, p, p).
-to_be_verb([is | T], T, s, pre).
-to_be_verb([is, not | T], T, p, pre).
-to_be_verb([are | T], T, p, pre).
-to_be_verb([are, not | T], T, p, pre).
-
-to_be_verb([was | T], T, i, pp).
-to_be_verb([was, not | T], T, i, pp).
-to_be_verb([was | T], T, s, pp).
-to_be_verb([was, not | T], T, s, pp).
-to_be_verb([were | T], T, p, pp).
-to_be_verb([were, not | T], T, p, pp).
-
-to_be_verb([has, been | T], T, s, pp).
-to_be_verb([has, not, been | T], T, s, pp).
-to_be_verb([have, been | T], T, P, pp):- P = p; P = i.
-to_be_verb([have, not, been | T], T, P, pp):- P = p; P = i.
-to_be_verb([may, have, been | T], T, _, pp).
-to_be_verb([may, not, have, been | T], T, _, pp).
-to_be_verb([might, have, been | T], T, _, pp).
-to_be_verb([might, not, have, been | T], T, _, pp).
-to_be_verb([may, be | T], T, _, pp).
-to_be_verb([may, not, be | T], T, _, pp).
-to_be_verb([might, be | T], T, _, pp).
-to_be_verb([minght, not, be | T], T, _, pp).
-to_be_verb([will, be | T], T, _, pp).
-to_be_verb([will, not, be | T], T, _, pp).
-to_be_verb([will, have, been | T], T, _, pp).
-to_be_verb([will, not, have, been | T], T, _, pp).
-to_be_verb([would, have, been | T], T, _, pp).
-to_be_verb([would, not, have, been | T], T, _, pp).
-to_be_verb([would, have, been | T], T, _, pp).
-to_be_verb([would, not, have, been | T], T, _, pp).
-to_be_verb([would, be | T], T, _, pp).
-to_be_verb([would, not, be| T], T, _, pp).
-to_be_verb([could, not, have, been | T], T, _, pp).
-to_be_verb([could, have, been | T], T, _, pp).
-to_be_verb([could, be | T], T, _, pp).
-to_be_verb([could, not, be | T], T, _, pp).
-to_be_verb([can, be | T], T, _, pp).
-to_be_verb([cannot, be | T], T, _, pp).
-
-% ----------------- auxilary verbs -------------
+% ----------------- auxilary verbs & to_be verbs -------------
 
 
 % pre: present -> so that the verb should be regular form: draw
@@ -294,50 +255,50 @@ aux_verb([was, not, gonna| T], T, s, pre).
 % I was attracted to the music.
 % The music has attracted the crowd.
 
-aux_verb([are| T], T, p, Ten):- Ten = cont; Ten = pp.
-aux_verb([are, not| T], T, p, Ten):- Ten = cont; Ten = pp.
-aux_verb([are, being| T], T, p, pp).
-aux_verb([are, not, being| T], T, p, pp).
-aux_verb([is| T], T, s, Ten):- Ten = cont; Ten = pp.
-aux_verb([is, not| T], T, s, Ten):- Ten = cont; Ten = pp.
-aux_verb([is, being| T], T, s, pp).
-aux_verb([is, not, being| T], T, s, pp).
-aux_verb([am, being| T], T, i, pp).
-aux_verb([am, not, being| T], T, i, pp).
-aux_verb([am| T], T, i, Ten):- Ten = cont; Ten = pp.
-aux_verb([am, not| T], T, i, Ten):- Ten = cont; Ten = pp.
+to_be_verb([are| T], T, p, Ten):- Ten = cont; Ten = pp.
+to_be_verb([are, not| T], T, p, Ten):- Ten = cont; Ten = pp.
+to_be_verb([are, being| T], T, p, pp).
+to_be_verb([are, not, being| T], T, p, pp).
+to_be_verb([is| T], T, s, Ten):- Ten = cont; Ten = pp.
+to_be_verb([is, not| T], T, s, Ten):- Ten = cont; Ten = pp.
+to_be_verb([is, being| T], T, s, pp).
+to_be_verb([is, not, being| T], T, s, pp).
+to_be_verb([am, being| T], T, i, pp).
+to_be_verb([am, not, being| T], T, i, pp).
+to_be_verb([am| T], T, i, Ten):- Ten = cont; Ten = pp.
+to_be_verb([am, not| T], T, i, Ten):- Ten = cont; Ten = pp.
 
 
-aux_verb([am, going, to, be| T], T, i, Ten):- Ten = cont; Ten = pp.
-aux_verb([am, gonna, be| T], T, i, Ten):- Ten = cont; Ten = pp.
-aux_verb([am, not, going, to, be| T], T, i, Ten):- Ten = cont; Ten = pp.
-aux_verb([am, not, gonna, be| T], T, i, Ten):- Ten = cont; Ten = pp.
-aux_verb([are, going, to, be| T], T, p, Ten):- Ten = cont; Ten = pp.
-aux_verb([are, gonna, be| T], T, p, Ten):- Ten = cont; Ten = pp.
-aux_verb([are, not, going, to, be| T], T, p, Ten):- Ten = cont; Ten = pp.
-aux_verb([are, not, gonna, be| T], T, p, Ten):- Ten = cont; Ten = pp.
-aux_verb([is, going, to, be| T], T, s, Ten):- Ten = cont; Ten = pp.
-aux_verb([is, gonna, be| T], T, s, Ten):- Ten = cont; Ten = pp.
-aux_verb([is, not, going, to, be| T], T, s, Ten):- Ten = cont; Ten = pp.
-aux_verb([is, not, gonna, be| T], T, s, Ten):- Ten = cont; Ten = pp.
+to_be_verb([am, going, to, be| T], T, i, Ten):- Ten = cont; Ten = pp.
+to_be_verb([am, gonna, be| T], T, i, Ten):- Ten = cont; Ten = pp.
+t0_be_verb([am, not, going, to, be| T], T, i, Ten):- Ten = cont; Ten = pp.
+to_be_verb([am, not, gonna, be| T], T, i, Ten):- Ten = cont; Ten = pp.
+to_be_verb([are, going, to, be| T], T, p, Ten):- Ten = cont; Ten = pp.
+to_be_verb([are, gonna, be| T], T, p, Ten):- Ten = cont; Ten = pp.
+to_be_verb([are, not, going, to, be| T], T, p, Ten):- Ten = cont; Ten = pp.
+to_be_verb([are, not, gonna, be| T], T, p, Ten):- Ten = cont; Ten = pp.
+to_be_verb([is, going, to, be| T], T, s, Ten):- Ten = cont; Ten = pp.
+to_be_verb([is, gonna, be| T], T, s, Ten):- Ten = cont; Ten = pp.
+to_be_verb([is, not, going, to, be| T], T, s, Ten):- Ten = cont; Ten = pp.
+to_be_verb([is, not, gonna, be| T], T, s, Ten):- Ten = cont; Ten = pp.
 
 
-aux_verb([was, going, to, be| T], T, P, Ten):- (P = i; P= s), (Ten = cont; Ten = pp).
-aux_verb([was, gonna, be| T], T, P, Ten):- (P = i; P= s), (Ten = cont; Ten = pp).
-aux_verb([was, going, to, be| T], T, P, Ten):- (P = i; P= s), (Ten = cont; Ten = pp).
-aux_verb([was, not, going, to, be| T], T, P, Ten):- (P = i; P= s), (Ten = cont; Ten = pp).
-aux_verb([was, being| T], T, P, pp):- P = i; P = s.
-aux_verb([was, not, being| T], T, P, pp):- P = i; P = s.
-aux_verb([were, going, to, be| T], T, p, Ten):- Ten = cont; Ten = pp.
-aux_verb([were, not, going, to, be| T], T, p, Ten):- Ten = cont; Ten = pp.
-aux_verb([were, gonna, be| T], T, p, Ten):- Ten = cont; Ten = pp.
-aux_verb([were, not, gonna, be| T], T, p, Ten):- Ten = cont; Ten = pp.
-aux_verb([were, being| T], T, p, pp).
-aux_verb([were, not, being| T], T, p, pp).
-aux_verb([was| T], T, P, Ten):- (P = i; P = s), (Ten = cont; Ten = pp).
-aux_verb([was, not| T], T, P, Ten):- (P = i; P = s), (Ten = cont; Ten = pp).
-aux_verb([were| T], T, p, Ten):- Ten = cont; Ten = pp.
-aux_verb([were, not| T], T, p, Ten):- Ten = cont; Ten = pp.
+to_be_verb([was, going, to, be| T], T, P, Ten):- (P = i; P= s), (Ten = cont; Ten = pp).
+to_be_verb([was, gonna, be| T], T, P, Ten):- (P = i; P= s), (Ten = cont; Ten = pp).
+to_be_verb([was, going, to, be| T], T, P, Ten):- (P = i; P= s), (Ten = cont; Ten = pp).
+to_be_verb([was, not, going, to, be| T], T, P, Ten):- (P = i; P= s), (Ten = cont; Ten = pp).
+to_be_verb([was, being| T], T, P, pp):- P = i; P = s.
+to_be_verb([was, not, being| T], T, P, pp):- P = i; P = s.
+to_be_verb([were, going, to, be| T], T, p, Ten):- Ten = cont; Ten = pp.
+to_be_verb([were, not, going, to, be| T], T, p, Ten):- Ten = cont; Ten = pp.
+to_be_verb([were, gonna, be| T], T, p, Ten):- Ten = cont; Ten = pp.
+to_be_verb([were, not, gonna, be| T], T, p, Ten):- Ten = cont; Ten = pp.
+to_be_verb([were, being| T], T, p, pp).
+to_be_verb([were, not, being| T], T, p, pp).
+to_be_verb([was| T], T, P, Ten):- (P = i; P = s), (Ten = cont; Ten = pp).
+to_be_verb([was, not| T], T, P, Ten):- (P = i; P = s), (Ten = cont; Ten = pp).
+to_be_verb([were| T], T, p, Ten):- Ten = cont; Ten = pp.
+to_be_verb([were, not| T], T, p, Ten):- Ten = cont; Ten = pp.
 
 
 aux_verb([have| T], T, P, pp):- P = i; P = p.
@@ -345,35 +306,35 @@ aux_verb([have, not| T], T, P, pp):- P = i; P = p.
 aux_verb([has| T], T, s, pp).
 aux_verb([has, not| T], T, s, pp).
 
-aux_verb([have, been| T], T, P, Ten):- (Ten = cont; Ten = pp), (P = i; P = p).
-aux_verb([have, not, been| T], T, P, Ten):- (Ten = cont; Ten = pp), (P = i; P = p).
-aux_verb([has, been| T], T, s, Ten):- Ten = cont; Ten = pp.
-aux_verb([has, not, been| T], T, s, Ten):- Ten = cont; Ten = pp.
+to_be_verb([have, been| T], T, P, Ten):- (Ten = cont; Ten = pp), (P = i; P = p).
+to_be_verb([have, not, been| T], T, P, Ten):- (Ten = cont; Ten = pp), (P = i; P = p).
+to_be_verb([has, been| T], T, s, Ten):- Ten = cont; Ten = pp.
+to_be_verb([has, not, been| T], T, s, Ten):- Ten = cont; Ten = pp.
 
 aux_verb([had| T], T, _, pp).
 aux_verb([had, not| T], T, _, pp).
-aux_verb([had, been| T], T, Ten):- Ten = cont; Ten = pp.
-aux_verb([had, not, been| T], T, Ten):- Ten = cont; Ten = pp.
+to_be_verb([had, been| T], T, Ten):- Ten = cont; Ten = pp.
+to_be_verb([had, not, been| T], T, Ten):- Ten = cont; Ten = pp.
 
 
-aux_verb([could, be| T], T, _, cont).
-aux_verb([could, not, be| T], T, _, cont).
-aux_verb([may, be| T], T, _, cont).
-aux_verb([may, not, be| T], T, _, cont).
-aux_verb([might, be| T], T, _, cont).
-aux_verb([might, not, be| T], T, _, cont).
-aux_verb([must, be| T], T, _, cont).
-aux_verb([must, not, be| T], T, _, cont).
-aux_verb([ought, to, be| T], T, _, cont).
-aux_verb([ought, not, to, be| T], T, _, cont).
-aux_verb([would, be| T], T, _, cont).
-aux_verb([would, not, be| T], T, _, cont).
-aux_verb([will, be| T], T, _, cont).
-aux_verb([will, not, be| T], T, _, cont).
-aux_verb([shall, be| T], T, _, cont).
-aux_verb([shall, not, be| T], T, _, cont).
-aux_verb([should, be| T], T, _, cont).
-aux_verb([should, not, be| T], T, _, cont).
+to_be_verb([could, be| T], T, _, cont).
+to_be_verb([could, not, be| T], T, _, cont).
+to_be_verb([may, be| T], T, _, cont).
+to_be_verb([may, not, be| T], T, _, cont).
+to_be_verb([might, be| T], T, _, cont).
+to_be_verb([might, not, be| T], T, _, cont).
+to_be_verb([must, be| T], T, _, cont).
+to_be_verb([must, not, be| T], T, _, cont).
+to_be_verb([ought, to, be| T], T, _, cont).
+to_be_verb([ought, not, to, be| T], T, _, cont).
+to_be_verb([would, be| T], T, _, cont).
+to_be_verb([would, not, be| T], T, _, cont).
+to_be_verb([will, be| T], T, _, cont).
+to_be_verb([will, not, be| T], T, _, cont).
+to_be_verb([shall, be| T], T, _, cont).
+to_be_verb([shall, not, be| T], T, _, cont).
+to_be_verb([should, be| T], T, _, cont).
+to_be_verb([should, not, be| T], T, _, cont).
 
 aux_verb([could, have| T], T, _, pp).
 aux_verb([could, not, have| T], T, _, pp).
@@ -394,22 +355,22 @@ aux_verb([shall, not, have| T], T, _, pp).
 aux_verb([should, have| T], T, _, pp).
 aux_verb([should, not, have| T], T, _, pp).
 
-aux_verb([could, have, been| T], T, _, Ten):- Ten = cont; Ten = pp.
-aux_verb([could, not, have, been| T], T, _, Ten):- Ten = cont; Ten = pp.
-aux_verb([may, have, been| T], T, _, Ten):- Ten = cont; Ten = pp.
-aux_verb([may, not, have, been| T], T, _, Ten):- Ten = cont; Ten = pp.
-aux_verb([might, have, been| T], T, _, Ten):- Ten = cont; Ten = pp.
-aux_verb([might, not, have, been| T], T, _, Ten):- Ten = cont; Ten = pp.
-aux_verb([must, have, been| T], T, _, Ten):- Ten = cont; Ten = pp.
-aux_verb([must, not, have, been| T], T, _, Ten):- Ten = cont; Ten = pp.
-aux_verb([ought, to, have, been| T], T, _, Ten):- Ten = cont; Ten = pp.
-aux_verb([ought, not, to, have, been| T], T, _, Ten):- Ten = cont; Ten = pp.
-aux_verb([would, have, been| T], T, _, Ten):- Ten = cont; Ten = pp.
-aux_verb([would, not, have, been| T], T, _, Ten):- Ten = cont; Ten = pp.
-aux_verb([will, have, been| T], T, _, Ten):- Ten = cont; Ten = pp.
-aux_verb([will, not, have, been| T], T, _, Ten):- Ten = cont; Ten = pp.
-aux_verb([should, have, been| T], T, _, Ten):- Ten = cont; Ten = pp.
-aux_verb([should, not, have, been| T], T, _, Ten):- Ten = cont; Ten = pp.
+to_be_verb([could, have, been| T], T, _, Ten):- Ten = cont; Ten = pp.
+to_be_verb([could, not, have, been| T], T, _, Ten):- Ten = cont; Ten = pp.
+to_be_verb([may, have, been| T], T, _, Ten):- Ten = cont; Ten = pp.
+to_be_verb([may, not, have, been| T], T, _, Ten):- Ten = cont; Ten = pp.
+to_be_verb([might, have, been| T], T, _, Ten):- Ten = cont; Ten = pp.
+to_be_verb([might, not, have, been| T], T, _, Ten):- Ten = cont; Ten = pp.
+to_be_verb([must, have, been| T], T, _, Ten):- Ten = cont; Ten = pp.
+to_be_verb([must, not, have, been| T], T, _, Ten):- Ten = cont; Ten = pp.
+to_be_verb([ought, to, have, been| T], T, _, Ten):- Ten = cont; Ten = pp.
+to_be_verb([ought, not, to, have, been| T], T, _, Ten):- Ten = cont; Ten = pp.
+to_be_verb([would, have, been| T], T, _, Ten):- Ten = cont; Ten = pp.
+to_be_verb([would, not, have, been| T], T, _, Ten):- Ten = cont; Ten = pp.
+to_be_verb([will, have, been| T], T, _, Ten):- Ten = cont; Ten = pp.
+to_be_verb([will, not, have, been| T], T, _, Ten):- Ten = cont; Ten = pp.
+to_be_verb([should, have, been| T], T, _, Ten):- Ten = cont; Ten = pp.
+to_be_verb([should, not, have, been| T], T, _, Ten):- Ten = cont; Ten = pp.
 
 
 
@@ -1666,6 +1627,17 @@ prep([over| T], T).
 prep([aside, from| T], T).
 
 % --------- adjectives -----------
+adj([pretty| T], T).
+adj([nicer| T], T).
+adj([beautiful| T], T).
+adj([crazy| T], T).
+adj([greater| T], T).
+adj([bigger| T], T).
+adj([less| T], T).
+adj([smaller| T], T).
+adj([higher| T], T).
+adj([smart| T], T).
+adj([stupid| T], T).
 adj([other| T], T).
 adj([new| T], T).
 adj([good| T], T).
