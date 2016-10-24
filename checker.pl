@@ -131,7 +131,7 @@ prep_phrase(T, T).
 prep_phrase(T0, T2):-
 	prep(T0, T1),
 	noun_phrase(T1, T2, _).
-prep_phrase(T0, T2):-
+prep_phrase(T0, T1):-
 	prep(T0, T1).
 
 
@@ -310,8 +310,8 @@ aux_verb([were, gonna, be| T], T, p, Ten):- Ten = cont; Ten = pp.
 aux_verb([were, not, gonna, be| T], T, p, Ten):- Ten = cont; Ten = pp.
 aux_verb([were, being| T], T, p, pp).
 aux_verb([were, not, being| T], T, p, pp).
-aux_verb([was| T], T, P, Ten):- (P = i; P = s) & (Ten = cont; Ten = pp).
-aux_verb([was, not| T], T, P, Ten):- (P = i; P = s) & (Ten = cont; Ten = pp).
+aux_verb([was| T], T, P, Ten):- (P = i; P = s), (Ten = cont; Ten = pp).
+aux_verb([was, not| T], T, P, Ten):- (P = i; P = s), (Ten = cont; Ten = pp).
 aux_verb([were| T], T, p, Ten):- Ten = cont; Ten = pp.
 aux_verb([were, not| T], T, p, Ten):- Ten = cont; Ten = pp.
 
@@ -1301,7 +1301,7 @@ thing([computer| T], T, p).
 thing([computer, science| T], T, s).
 thing([phone, calls| T], T, p).
 thing([phone, call| T], T, s).
-thing([messages T], T, p).
+thing([messages| T], T, p).
 thing([message| T], T, s).
 
 thing([capitals| T], T, p).
@@ -1430,7 +1430,7 @@ thing([games| T], T, p).
 thing([movie| T], T, s).
 thing([movies| T], T, p).
 thing([video| T], T, s).
-thing([video games| T], T, p).
+thing([video, games| T], T, p).
 thing([gas| T], T, s).
 
 thing([glass| T], T, s).
@@ -1588,11 +1588,11 @@ thing([wife| T], T, s).
 thing([wives| T], T, p).
 thing([husbands| T], T, p).
 thing([husband| T], T, s).
-thing([family T], T, s).
+thing([family| T], T, s).
 
 thing([window| T], T, s).
 thing([window| T], T, p).
-thing([door T], T, s).
+thing([door| T], T, s).
 thing([doors| T], T, p).
 thing([november| T], T, s).
 thing([october| T], T, s).
@@ -1623,18 +1623,18 @@ prep([through| T], T).
 prep([above| T], T).
 prep([below| T], T).
 prep([from| T], T).
-prep([in front of| T], T).
-prep([across from| T], T).
+prep([in, front, of| T], T).
+prep([across, from| T], T).
 prep([past| T], T).
 prep([beneath| T], T).
 prep([beyond| T], T).
 prep([into| T], T).
 prep([onto| T], T).
 prep([at| T], T).
-prep([apart from| T], T).
-prep([opposite to| T], T).
+prep([apart, from| T], T).
+prep([opposite, to| T], T).
 prep([over| T], T).
-prep([aside from| T], T).
+prep([aside, from| T], T).
 
 % --------- adjectives -----------
 adj([other| T], T).
@@ -1723,10 +1723,10 @@ adj([easy| T], T).
 adj([trivial| T], T).
 adj([current| T], T).
 adj([past| T], T).
-adj([a number of| T], T).
-adj([a group of| T], T).
-adj([a lot of| T], T).
-adj([abunch of| T], T).
+adj([a, number, of| T], T).
+adj([a, group, of| T], T).
+adj([a, lot, of| T], T).
+adj([a, bunch, of| T], T).
 /*
 To start testing sentences, run the following:
 ?- q.
