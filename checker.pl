@@ -1,7 +1,7 @@
 % GrammarChecker.pl
 /*
 
--------------- One concret sentences example ---------------------------
+-------------- A concrete example of a simple sentence---------------------------
 
 1. XX eat food:
 
