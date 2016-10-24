@@ -112,9 +112,18 @@ verb_phrase(T0,T3, Person):-
 	mp(T2, T3, Person2).
 
 % "to be" + adjective
-verb_phrase(T0, T2, Person):-
+verb_phrase(T0, T3, Person):-
 	to_be_verb(T0,T1, Person, _),
-	adj(T1, T2).
+	adj(T1, T2),
+	prep_phrase(T2, T3).
+
+verb_phrase(T0, T4, Person):-
+	to_be_verb(T0,T1, Person, _),
+	compare(T1, T2), % less or more
+	adj(T2, T3),
+	prep_phrase(T3, T4).
+
+
 
 
 
@@ -415,6 +424,11 @@ reg_verb([talks| T], T, s, pres).
 reg_verb([talk| T], T, P, pre):- P = i; P = p.
 reg_verb([talked| T], T, _, Ten):- Ten = pp; Ten = past.
 reg_verb([talking| T], T, _, cont).
+
+reg_verb([rains| T], T, s, pres).
+reg_verb([rain| T], T, P, pre):- P = i; P = p.
+reg_verb([rained| T], T, _, Ten):- Ten = pp; Ten = past.
+reg_verb([raining| T], T, _, cont).
 
 reg_verb([sees| T], T, s, pres).
 reg_verb([see| T], T, P, pre):- P = i; P = p.
@@ -1625,8 +1639,45 @@ prep([apart, from| T], T).
 prep([opposite, to| T], T).
 prep([over| T], T).
 prep([aside, from| T], T).
+prep([than| T], T).
+prep([before| T], T).
+prep([after| T], T).
+prep([about| T], T).
+prep([against| T], T).
+prep([for| T], T).
+prep([during| T], T).
+prep([behind| T], T).
+prep([between| T], T).
+prep([among| T], T).
+prep([down| T], T).
+prep([up| T], T).
+prep([like| T], T).
+prep([near| T], T).
+prep([off| T], T).
+prep([since| T], T).
+prep([throughout| T], T).
+prep([till| T], T).
+prep([until| T], T).
+prep([toward| T], T).
+prep([upon| T], T).
+prep([according, to| T], T).
+prep([because, of| T], T).
+prep([due, to| T], T).
+prep([in, addition, to| T], T).
+prep([out, of| T], T).
+prep([instead, of| T], T).
+prep([in, spite, of| T], T).
+prep([by, way, of| T], T).
+prep([over| T], T).
+
 
 % --------- adjectives -----------
+
+compare([more| T], T).
+compare([less| T], T).
+
+
+adj([more| T], T).
 adj([pretty| T], T).
 adj([nicer| T], T).
 adj([beautiful| T], T).
