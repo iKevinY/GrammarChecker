@@ -70,11 +70,9 @@ Let's find table. ----> no
 :- discontiguous aux_verb/4.
 
 
-% sentence[]
 sentence(T0, T2, Person):-
 	noun_phrase(T0, T1, Person),
 	verb_phrase(T1, T2, Person).
-
 
 
 % A noun phrase is an optional determiner followed by
@@ -106,6 +104,17 @@ verb_phrase(T0, T2, Person):-
 verb_phrase(T0,T2, Person):-
 	verb(T0,T1, Person, _),
 	noun_phrase(T1, T2, _).
+
+% "I found the man who eats the food."
+verb_phrase(T0,T3, Person):-
+	verb(T0,T1, Person, _),
+	noun_phrase(T1, T2, Person2),
+	mp(T2, T3, Person2).
+
+% "to be" + adjective
+verb_phrase(T0, T2, Person):-
+	to_be_verb(T0,T1, Person, _),
+	adj(T1, T2).
 
 
 
@@ -139,20 +148,12 @@ adjectives(T,T).
 % 'that' followed by a relation then a noun_phrase or
 % nothing
 
-mp(T0,T1, _) :-
-    prep_phrase(T0,T1).
 mp([that|T0],T1,Person) :-
     verb_phrase(T0,T1,Person).
-mp([that|T0],T1, _) :-
-    sentence(T0,T1, _).
 mp([who|T0],T1,Person) :-
     verb_phrase(T0,T1,Person).
 mp([which|T0],T1,Person) :-
     verb_phrase(T0,T1,Person).
-mp([whose|T0],T2,Person) :-
-	noun(T0,T1, Person),
-    verb_phrase(T1,T2,Person).
-mp(T,T,_).
 
 
 noun(T0, T1, Person):- pronoun(T0, T1, Person).
@@ -161,15 +162,27 @@ noun(T0, T1, Person):- thing(T0,T1, Person).
 
 
 
-verb(T0, T1, Person, _):- 
+verb(T0, T1, Person, _):-
 	reg_verb(T0, T1, Person, Tense),
 	\+ Tense = pp.
-verb(T0, T2, Person, _):- 
+verb(T0, T2, Person, _):-
 	aux_verb(T0, T1, Person, Tense),
 	reg_verb(T1, T2, _, Tense).
 
 
 %Dictionary
+
+
+
+% ----------------- 'to be' verbs --------------
+
+to_be_verb([am | T], T, i, pre).
+to_be_verb([is | T], T, s, pre).
+to_be_verb([are | T], T, p, pre).
+
+to_be_verb([was | T], T, i, p).
+to_be_verb([was | T], T, s, p).
+to_be_verb([were | T], T, p, p).
 
 % ----------------- auxilary verbs -------------
 
@@ -262,7 +275,7 @@ aux_verb([am, not| T], T, i, Ten):- Ten = cont; Ten = pp.
 
 aux_verb([am, going, to, be| T], T, i, Ten):- Ten = cont; Ten = pp.
 aux_verb([am, gonna, be| T], T, i, Ten):- Ten = cont; Ten = pp.
-aux_verb([am, not, going, to, be| T], T, i, Ten):- Ten = cont; Ten = pp. 
+aux_verb([am, not, going, to, be| T], T, i, Ten):- Ten = cont; Ten = pp.
 aux_verb([am, not, gonna, be| T], T, i, Ten):- Ten = cont; Ten = pp.
 aux_verb([are, going, to, be| T], T, p, Ten):- Ten = cont; Ten = pp.
 aux_verb([are, gonna, be| T], T, p, Ten):- Ten = cont; Ten = pp.
@@ -381,7 +394,7 @@ The verbs are divided into the following subactegories:
 */
 
 reg_verb([like| T], T, P, pre):- P = i; P = p.
-reg_verb([likes| T], T, s, pres). 
+reg_verb([likes| T], T, s, pres).
 reg_verb([liked| T], T, _, Ten):- Ten = pp; Ten = past.
 reg_verb([liking| T], T, _, cont).
 
@@ -595,7 +608,7 @@ reg_verb([brought| T], T, _, Ten):- Ten = pp; Ten = past.
 reg_verb([bringing| T], T, _, cont).
 
 reg_verb([meets| T], T, s, pres).
-reg_verb([meet| T], T, P, pre):- P = i; P = p. 
+reg_verb([meet| T], T, P, pre):- P = i; P = p.
 reg_verb([met| T], T, _, Ten):- Ten = pp; Ten = past.
 reg_verb([meeting| T], T, _, cont).
 
@@ -605,7 +618,7 @@ reg_verb([left| T], T, _, Ten):- Ten = pp; Ten = past.
 reg_verb([leaving| T], T, _, cont).
 
 reg_verb([allows| T], T, s, pres).
-reg_verb([allow| T], T, P, pre):- P = i; P = p. 
+reg_verb([allow| T], T, P, pre):- P = i; P = p.
 reg_verb([allowed| T], T, _, Ten):- Ten = pp; Ten = past.
 reg_verb([allowing| T], T, _, cont).
 
