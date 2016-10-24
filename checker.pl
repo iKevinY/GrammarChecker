@@ -1089,6 +1089,15 @@ pronoun([them| T], T, p).
 pronoun([her| T], T, s).
 pronoun([him| T], T, s).
 
+pronoun([nothing| T], T, s).
+pronoun([no, one| T], T, s).
+pronoun([none| T], T, s).
+pronoun([neither| T], T, s).
+pronoun([either| T], T, s).
+pronoun([everyone| T], T, s).
+pronoun([everything| T], T, s).
+pronoun([anything| T], T, s).
+
 % -------------- proper nouns --------------
 
 proper_noun([ubc| T], T, s).
@@ -1196,7 +1205,7 @@ thing([question| T], T, s).
 thing([questions| T], T, p).
 
 thing([color| T], T, s).
-thing([people| T], T, p).
+thing([colors| T], T, p).
 
 thing([money| T], T, s).
 
@@ -1205,6 +1214,388 @@ thing([water| T], T, s).
 thing([home| T], T, s).
 
 thing([work| T], T, s).
+
+thing([action| T], T, s).
+thing([actions| T], T, p).
+
+thing([age| T], T, s).
+thing([ages| T], T, p).
+
+thing([air| T], T, s).
+
+thing([apple| T], T, s).
+thing([apples| T], T, p).
+
+thing([paper| T], T, s).
+thing([papers| T], T, p).
+
+thing([balls| T], T, p).
+thing([ball| T], T, s).
+
+thing([baby| T], T, s).
+thing([babies| T], T, p).
+
+thing([course| T], T, s).
+thing([courses| T], T, p).
+
+thing([assignment| T], T, s).
+thing([assignments| T], T, p).
+thing([homework| T], T, s).
+thing([classes| T], T, p).
+thing([class| T], T, s).
+thing([cs, 312| T], T, s).
+
+thing([beds| T], T, p).
+thing([bed| T], T, s).
+thing([bills| T], T, p).
+thing([bill| T], T, s).
+thing([animals| T], T, p).
+thing([animal| T], T, s).
+thing([birds| T], T, p).
+thing([bird| T], T, s).
+thing([bodies| T], T, p).
+thing([body| T], T, s).
+
+thing([pencil| T], T, s).
+thing([pencils| T], T, p).
+thing([pen| T], T, s).
+thing([pens| T], T, p).
+thing([books| T], T, p).
+thing([book| T], T, s).
+thing([boxes| T], T, p).
+thing([box| T], T, s).
+
+thing([brothers| T], T, p).
+thing([brother| T], T, s).
+thing([mom| T], T, s).
+thing([dad| T], T, s).
+thing([daughter| T], T, s).
+thing([daughters| T], T, p).
+
+thing([building| T], T, s).
+thing([buildings| T], T, p).
+thing([business| T], T, s).
+
+thing([dream| T], T, s).
+thing([dreams| T], T, p).
+
+thing([cellphone| T], T, s).
+thing([cellphones| T], T, p).
+thing([laptops| T], T, p).
+thing([laptop| T], T, s).
+thing([phones| T], T, p).
+thing([phone| T], T, s).
+thing([compters| T], T, p).
+thing([computer| T], T, p).
+thing([computer, science| T], T, s).
+thing([phone, calls| T], T, p).
+thing([phone, call| T], T, s).
+thing([messages T], T, p).
+thing([message| T], T, s).
+
+thing([capitals| T], T, p).
+thing([capital| T], T, s).
+thing([cities| T], T, p).
+thing([city| T], T, s).
+thing([provinces| T], T, p).
+thing([province| T], T, s).
+thing([cases| T], T, p).
+thing([case| T], T, s).
+
+thing([cat| T], T, s).
+thing([cats| T], T, p).
+thing([monkey| T], T, s).
+thing([monkey| T], T, p).
+thing([sheep| T], T, p).
+thing([sheep| T], T, p).
+thing([fish| T], T, P):- P = s; P = p.
+thing([cause| T], T, s).
+thing([causes| T], T, p).
+thing([reasons| T], T, p).
+thing([reason| T], T, s).
+thing([dollars| T], T, p).
+thing([dollar| T], T, s).
+thing([conditions| T], T, p).
+thing([condition| T], T, s).
+thing([cents| T], T, p).
+thing([cent| T], T, s).
+
+thing([center| T], T, s).
+
+thing([chance| T], T, s).
+thing([chances| T], T, p).
+thing([change| T], T, s).
+thing([changes| T], T, p).
+thing([church| T], T, s).
+
+thing([circle| T], T, s).
+thing([cicles| T], T, p).
+thing([square| T], T, s).
+thing([squares| T], T, p).
+thing([emotion| T], T, s).
+thing([emotions| T], T, p).
+thing([clothes| T], T, p).
+
+thing([cloud| T], T, s).
+thing([clouds| T], T, p).
+
+thing([sky| T], T, s).
+thing([skies| T], T, p).
+thing([moon| T], T, s).
+thing([moons| T], T, p).
+thing([suns| T], T, p).
+thing([sun| T], T, s).
+thing([weathers| T], T, p).
+thing([weather| T], T, s).
+
+thing([today| T], T, s).
+thing([tomorrow| T], T, s).
+thing([yesterday| T], T, s).
+thing([tonight| T], T, s).
+thing([date| T], T, s).
+
+thing([copy| T], T, s).
+thing([copies| T], T, p).
+thing([company| T], T, s).
+thing([companies| T], T, p).
+thing([science| T], T, s).
+thing([art| T], T, s).
+thing([arts| T], T, p).
+thing([department| T], T, s).
+thing([deapartment| T], T, p).
+thing([math| T], T, s).
+thing([english| T], T, s).
+thing([languages| T], T, p).
+thing([language| T], T, s).
+
+thing([energy| T], T, s).
+
+thing([country| T], T, s).
+thing([countries| T], T, p).
+thing([village| T], T, s).
+thing([villages| T], T, p).
+thing([cow| T], T, s).
+thing([cows| T], T, p).
+thing([dictionary| T], T, s).
+thing([dictionaries| T], T, p).
+thing([direction| T], T, s).
+thing([directions| T], T, p).
+
+thing([ta| T], T, s).
+thing([tas| T], T, p).
+thing([teacher| T], T, s).
+thing([teachers| T], T, p).
+thing([professor| T], T, s).
+thing([professors| T], T, p).
+thing([instructor| T], T, s).
+thing([instructors| T], T, p).
+thing([doctor| T], T, s).
+thing([doctors| T], T, p).
+thing([hospital| T], T, s).
+thing([hospitals| T], T, p).
+thing([ear| T], T, s).
+thing([ears| T], T, p).
+thing([eye| T], T, s).
+thing([eyes| T], T, p).
+thing([nose| T], T, s).
+thing([noses| T], T, p).
+thing([mouthes| T], T, p).
+thing([mouth| T], T, s).
+thing([faces| T], T, p).
+thing([face| T], T, s).
+
+thing([stuff| T], T, s).
+thing([eggs| T], T, p).
+thing([egg| T], T, s).
+thing([examples| T], T, p).
+thing([example| T], T, s).
+thing([sentences| T], T, p).
+thing([sentence| T], T, s).
+
+thing([experience| T], T, s).
+thing([experiences| T], T, p).
+thing([game| T], T, s).
+thing([games| T], T, p).
+thing([movie| T], T, s).
+thing([movies| T], T, p).
+thing([video| T], T, s).
+thing([video games| T], T, p).
+thing([gas| T], T, s).
+
+thing([glass| T], T, s).
+
+thing([government| T], T, s).
+thing([groups| T], T, p).
+thing([group| T], T, s).
+thing([hands| T], T, p).
+thing([hand| T], T, s).
+
+thing([hair| T], T, s).
+thing([heads| T], T, p).
+thing([head| T], T, s).
+thing([hearts| T], T, p).
+thing([heart| T], T, s).
+thing([houses| T], T, p).
+thing([house| T], T, s).
+thing([ideas| T], T, p).
+thing([idea| T], T, s).
+thing([parts| T], T, p).
+thing([part| T], T, s).
+thing([interests| T], T, p).
+thing([interest| T], T, s).
+
+thing([fruits| T], T, p).
+thing([fruit| T], T, s).
+thing([bananas| T], T, p).
+thing([banana| T], T, s).
+thing([vegetables| T], T, p).
+thing([vegetable| T], T, s).
+thing([patatoes| T], T, p).
+thing([patato| T], T, s).
+thing([voice| T], T, s).
+thing([sound| T], T, s).
+thing([broccoli| T], T, s).
+thing([tamatoes| T], T, p).
+thing([tamato| T], T, s).
+thing([carrots| T], T, p).
+thing([carrot| T], T, s).
+thing([jobs| T], T, p).
+thing([job| T], T, s).
+thing([ekys| T], T, p).
+thing([key| T], T, s).
+thing([legs| T], T, p).
+thing([leg| T], T, s).
+
+thing([level| T], T, s).
+thing([levels| T], T, p).
+thing([thoughts| T], T, p).
+thing([light| T], T, s).
+thing([lie| T], T, s).
+thing([lies| T], T, p).
+thing([line| T], T, s).
+thing([lines| T], T, p).
+thing([technology| T], T, s).
+thing([information| T], T, s).
+thing([list| T], T, s).
+thing([lists| T], T, p).
+
+thing([meat| T], T, s).
+thing([turkey| T], T, s).
+thing([chicken| T], T, s).
+thing([beef| T], T, s).
+thing([sandwich| T], T, s).
+thing([sandwiches| T], T, p).
+thing([burger| T], T, s).
+thing([pizza| T], T, s).
+thing([pasta| T], T, s).
+thing([cookie| T], T, s).
+thing([cookies| T], T, p).
+thing([cake| T], T, s).
+thing([cakes| T], T, p).
+thing([bread| T], T, s).
+thing([milk| T], T, s).
+thing([grocery| T], T, s).
+thing([cheese| T], T, s).
+thing([supermarket| T], T, s).
+thing([mind| T], T, s).
+thing([will| T], T, s).
+
+thing([black| T], T, s).
+thing([blue| T], T, s).
+thing([yellow| T], T, s).
+thing([white| T], T, s).
+thing([purple| T], T, s).
+thing([red| T], T, s).
+thing([green| T], T, s).
+thing([pink| T], T, s).
+thing([orange| T], T, s).
+thing([oranges| T], T, s).
+
+thing([smell| T], T, s).
+
+thing([clock| T], T, s).
+thing([clockes| T], T, p).
+
+thing([month| T], T, s).
+thing([months| T], T, p).
+thing([music| T], T, s).
+thing([night| T], T, s).
+thing([nights| T], T, p).
+thing([notes| T], T, p).
+thing([note| T], T, s).
+thing([object| T], T, s).
+thing([objects| T], T, p).
+thing([office| T], T, s).
+thing([oil| T], T, s).
+thing([pair| T], T, s).
+thing([pairs| T], T, p).
+thing([parties| T], T, p).
+thing([party| T], T, s).
+thing([parks| T], T, p).
+thing([park| T], T, s).
+thing([problem| T], T, s).
+thing([problems| T], T, p).
+thing([worries| T], T, p).
+thing([troubles| T], T, p).
+thing([trouble| T], T, s).
+
+thing([road| T], T, s).
+thing([roads| T], T, p).
+thing([streets| T], T, p).
+thing([street| T], T, s).
+thing([bus| T], T, s).
+thing([buses| T], T, p).
+thing([cars| T], T, p).
+thing([car| T], T, s).
+thing([rules| T], T, p).
+thing([rule| T], T, s).
+thing([subject| T], T, s).
+thing([subjects| T], T, p).
+
+thing([second| T], T, s).
+thing([seconds| T], T, p).
+thing([minutes| T], T, p).
+thing([minute| T], T, s).
+thing([side| T], T, s).
+thing([sides| T], T, p).
+thing([right| T], T, s).
+thing([left| T], T, p).
+thing([size| T], T, s).
+
+thing([sister| T], T, s).
+thing([sisters| T], T, p).
+thing([snow| T], T, s).
+thing([solution| T], T, s).
+thing([solutions| T], T, p).
+thing([sons| T], T, p).
+thing([son| T], T, s).
+thing([spring| T], T, s).
+thing([summer| T], T, s).
+thing([sugar| T], T, s).
+thing([weight| T], T, s).
+thing([wife| T], T, s).
+thing([wives| T], T, p).
+thing([husbands| T], T, p).
+thing([husband| T], T, s).
+thing([family T], T, s).
+
+thing([window| T], T, s).
+thing([window| T], T, p).
+thing([door T], T, s).
+thing([doors| T], T, p).
+thing([november| T], T, s).
+thing([october| T], T, s).
+thing([holiday| T], T, s).
+thing([exam| T], T, s).
+thing([exams| T], T, p).
+thing([midterm| T], T, s).
+thing([midterms| T], T, p).
+thing([effort| T], T, s).
+thing([grades| T], T, s).
+
+thing([fun| T], T, s).
+
+
 
 %---------- prepositions ------------
 prep([to| T], T).
@@ -1220,6 +1611,19 @@ prep([around| T], T).
 prep([through| T], T).
 prep([above| T], T).
 prep([below| T], T).
+prep([from| T], T).
+prep([in front of| T], T).
+prep([across from| T], T).
+prep([past| T], T).
+prep([beneath| T], T).
+prep([beyond| T], T).
+prep([into| T], T).
+prep([onto| T], T).
+prep([at| T], T).
+prep([apart from| T], T).
+prep([opposite to| T], T).
+prep([over| T], T).
+prep([aside from| T], T).
 
 % --------- adjectives -----------
 adj([other| T], T).
@@ -1273,7 +1677,45 @@ adj([happy| T], T).
 adj([sad| T], T).
 adj([tall| T], T).
 adj([tired| T], T).
-
+adj([exciting| T], T).
+adj([excited| T], T).
+adj([left| T], T).
+adj([amazing| T], T).
+adj([awesome| T], T).
+adj([little| T], T).
+adj([small| T], T).
+adj([many| T], T).
+adj([much| T], T).
+adj([few| T], T).
+adj([my| T], T).
+adj([your| T], T).
+adj([her| T], T).
+adj([his| T], T).
+adj([their| T], T).
+adj([our| T], T).
+adj([its| T], T).
+adj([real| T], T).
+adj([correct| T], T).
+adj([social| T], T).
+adj([full| T], T).
+adj([crowded| T], T).
+adj([upset| T], T).
+adj([angry| T], T).
+adj([scared| T], T).
+adj([scary| T], T).
+adj([clear| T], T).
+adj([recent| T], T).
+adj([open| T], T).
+adj([closed| T], T).
+adj([difficult| T], T).
+adj([easy| T], T).
+adj([trivial| T], T).
+adj([current| T], T).
+adj([past| T], T).
+adj([a number of| T], T).
+adj([a group of| T], T).
+adj([a lot of| T], T).
+adj([abunch of| T], T).
 /*
 To start testing sentences, run the following:
 ?- q.
