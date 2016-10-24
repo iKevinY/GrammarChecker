@@ -177,12 +177,23 @@ verb(T0, T2, Person, _):-
 % ----------------- 'to be' verbs --------------
 
 to_be_verb([am | T], T, i, pre).
+to_be_verb([am, not | T], T, p, p).
 to_be_verb([is | T], T, s, pre).
+to_be_verb([is, not | T], T, p, pre).
 to_be_verb([are | T], T, p, pre).
+to_be_verb([are, not | T], T, p, pre).
 
 to_be_verb([was | T], T, i, p).
+to_be_verb([was, not | T], T, i, p).
 to_be_verb([was | T], T, s, p).
+to_be_verb([was, not | T], T, s, p).
 to_be_verb([were | T], T, p, p).
+to_be_verb([were, not | T], T, p, p).
+
+to_be_verb([has, been | T], T, s, pp).
+to_be_verb([have, been | T], T, p, pp).
+to_be_verb([may, have, been | T], T, _, pp).
+to_be_verb([will, be | T], T, _, pp).
 
 % ----------------- auxilary verbs -------------
 
