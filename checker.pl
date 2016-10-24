@@ -183,17 +183,41 @@ to_be_verb([is, not | T], T, p, pre).
 to_be_verb([are | T], T, p, pre).
 to_be_verb([are, not | T], T, p, pre).
 
-to_be_verb([was | T], T, i, p).
-to_be_verb([was, not | T], T, i, p).
-to_be_verb([was | T], T, s, p).
-to_be_verb([was, not | T], T, s, p).
-to_be_verb([were | T], T, p, p).
-to_be_verb([were, not | T], T, p, p).
+to_be_verb([was | T], T, i, pp).
+to_be_verb([was, not | T], T, i, pp).
+to_be_verb([was | T], T, s, pp).
+to_be_verb([was, not | T], T, s, pp).
+to_be_verb([were | T], T, p, pp).
+to_be_verb([were, not | T], T, p, pp).
 
 to_be_verb([has, been | T], T, s, pp).
-to_be_verb([have, been | T], T, p, pp).
+to_be_verb([has, not, been | T], T, s, pp).
+to_be_verb([have, been | T], T, P, pp):- P = p; P = i.
+to_be_verb([have, not, been | T], T, P, pp):- P = p; P = i.
 to_be_verb([may, have, been | T], T, _, pp).
+to_be_verb([may, not, have, been | T], T, _, pp).
+to_be_verb([might, have, been | T], T, _, pp).
+to_be_verb([might, not, have, been | T], T, _, pp).
+to_be_verb([may, be | T], T, _, pp).
+to_be_verb([may, not, be | T], T, _, pp).
+to_be_verb([might, be | T], T, _, pp).
+to_be_verb([minght, not, be | T], T, _, pp).
 to_be_verb([will, be | T], T, _, pp).
+to_be_verb([will, not, be | T], T, _, pp).
+to_be_verb([will, have, been | T], T, _, pp).
+to_be_verb([will, not, have, been | T], T, _, pp).
+to_be_verb([would, have, been | T], T, _, pp).
+to_be_verb([would, not, have, been | T], T, _, pp).
+to_be_verb([would, have, been | T], T, _, pp).
+to_be_verb([would, not, have, been | T], T, _, pp).
+to_be_verb([would, be | T], T, _, pp).
+to_be_verb([would, not, be| T], T, _, pp).
+to_be_verb([could, not, have, been | T], T, _, pp).
+to_be_verb([could, have, been | T], T, _, pp).
+to_be_verb([could, be | T], T, _, pp).
+to_be_verb([could, not, be | T], T, _, pp).
+to_be_verb([can, be | T], T, _, pp).
+to_be_verb([cannot, be | T], T, _, pp).
 
 % ----------------- auxilary verbs -------------
 
@@ -1605,6 +1629,11 @@ thing([effort| T], T, s).
 thing([grades| T], T, s).
 
 thing([fun| T], T, s).
+
+thing([boys| T], T, p).
+thing([boy| T], T, s).
+thing([girl| T], T, s).
+thing([girls| T], T, p).
 
 
 
