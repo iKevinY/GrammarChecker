@@ -1,6 +1,6 @@
 # GrammarChecker
 
-A simple, rulae-based application that checks grammar mistakes in input sentences.
+A simple, rule-based application that checks grammar mistakes in input sentences.
 
 To run [GrammarChecker], launch SWI-Prolog and load `checker.pl`, then run `q.` before each query.
 
